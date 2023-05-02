@@ -1,0 +1,13 @@
+redis:
+  host: localhost
+  port: 6379
+  password: pass
+images:
+  folder_path: /images
+  queue_name: image_queue
+postgres:
+  host: localhost
+  port: 5432
+  user: postgres
+  password: pass
+  dbname: db

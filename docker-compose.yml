@@ -1,0 +1,37 @@
+version: "3.9"
+services:
+  app:
+    build: .
+    command: bash run.sh
+    environment:
+      - REDIS_HOST=localhost
+      - REDIS_PORT=6379
+      - POSTGRES_HOST=localhost
+      - POSTGRES_PORT=5432
+      - POSTGRES_DATABASE=db
+      - POSTGRES_USERNAME=user
+      - POSTGRES_PASSWORD=password
+    depends_on:
+      - redis
+      - postgres
+    ports:
+      - "8000:8000"
+    volumes:
+      - ".:/app"
+      - "./logs:/app/logs"
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+  postgres:
+    image: postgres:latest
+    environment:
+      - POSTGRES_DB=db
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+volumes:
+  postgres_data:

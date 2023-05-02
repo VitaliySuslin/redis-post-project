@@ -1,0 +1,4 @@
+pyyaml
+redis
+psycopg2-binary
+pillow

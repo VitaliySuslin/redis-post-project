@@ -1,5 +1,4 @@
 import threading
-from datetime import datetime
 import yaml
 
 from redis_queue import put_images_to_redis
